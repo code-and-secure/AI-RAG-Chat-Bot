@@ -1,0 +1,17 @@
+streamlit
+langchain
+langchain-community
+langchain-openai
+chromadb
+pypdf
+python-docx
+docx2txt
+openai
+python-dotenv
+langchain-text-splitters
+langchain-groq
+sentence-transformers
+requests
+beautifulsoup4
+googlesearch-python
+duckduckgo-search
