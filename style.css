@@ -120,13 +120,22 @@ body,
     color: var(--text) !important;
 }
 
-[data-testid="stHeader"],
-[data-testid="stToolbar"],
-#MainMenu,
-header,
+[data-testid="stHeader"] {
+    background: transparent !important;
+}
+
+[data-testid="stToolbar"] {
+    right: 0.75rem !important;
+    top: 0.6rem !important;
+}
+
+[data-testid="collapsedControl"] {
+    display: flex !important;
+    visibility: visible !important;
+}
+
 footer {
     visibility: hidden !important;
-    height: 0 !important;
 }
 
 .top-nav {
@@ -134,7 +143,7 @@ footer {
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    margin: 0 auto 1.25rem;
+    margin: 1.4rem auto 1.25rem;
     max-width: 1180px;
 }
 
@@ -366,12 +375,9 @@ footer {
     text-align: center;
 }
 
-.main-panel {
-    max-width: 1180px !important;
-    margin: 0 auto 2.5rem !important;
-}
-
-.main-panel [data-testid="stFileUploader"] {
+div[data-testid="stFileUploader"] {
+    max-width: 1180px;
+    margin: 0 auto 1.4rem;
     border-radius: 28px !important;
     padding: 1rem 1.1rem !important;
     border: 1px solid rgba(255,255,255,0.08) !important;
@@ -380,28 +386,28 @@ footer {
     box-shadow: var(--shadow) !important;
 }
 
-.main-panel [data-testid="stFileUploader"] label {
+div[data-testid="stFileUploader"] label {
     color: var(--text) !important;
     font-weight: 700 !important;
 }
 
-.main-panel [data-testid="stFileUploader"] section,
-.main-panel [data-testid="stFileUploader"] div,
-.main-panel [data-testid="stFileUploader"] span,
-.main-panel [data-testid="stFileUploader"] small,
-.main-panel [data-testid="stFileUploader"] label {
+div[data-testid="stFileUploader"] section,
+div[data-testid="stFileUploader"] div,
+div[data-testid="stFileUploader"] span,
+div[data-testid="stFileUploader"] small,
+div[data-testid="stFileUploader"] label {
     color: var(--text) !important;
 }
 
-.main-panel [data-testid="stFileUploaderDropzone"] {
+div[data-testid="stFileUploaderDropzone"] {
     background: rgba(255,255,255,0.03) !important;
     border: 1px dashed rgba(255,255,255,0.08) !important;
     border-radius: 22px !important;
     padding: 1rem !important;
 }
 
-.main-panel [data-testid="stFileUploader"] button,
-.main-panel [data-testid="stBaseButton-secondary"] {
+div[data-testid="stFileUploader"] button,
+button[data-testid="stBaseButton-secondary"] {
     min-height: 48px !important;
     border-radius: 16px !important;
     border: 1px solid rgba(255,255,255,0.1) !important;
@@ -411,27 +417,24 @@ footer {
     box-shadow: 0 14px 32px rgba(0,0,0,0.24) !important;
 }
 
-.main-panel [data-testid="stFileUploader"] button:disabled,
-.chat-input-container .stFormSubmitButton button:disabled,
-.main-panel .stButton button:disabled,
-.main-panel .stFormSubmitButton button:disabled {
+div[data-testid="stFileUploader"] button:disabled,
+div[data-testid="stForm"] .stFormSubmitButton button:disabled,
+.stButton button:disabled,
+.stFormSubmitButton button:disabled {
     opacity: 0.45 !important;
     color: rgba(246,255,249,0.7) !important;
 }
 
-.chat-input-container {
+div[data-testid="stForm"] {
     max-width: 1180px;
     margin: 1.2rem auto 0;
-}
-
-.chat-input-container [data-testid="stForm"] {
     padding: 0 !important;
     background: transparent !important;
     border: 0 !important;
 }
 
-.chat-input-container .stTextInput input,
-.main-panel .stTextInput input {
+div[data-testid="stForm"] .stTextInput input,
+div[data-testid="stTextInputRootElement"] input {
     height: 62px !important;
     border-radius: 22px !important;
     border: 1px solid rgba(255,255,255,0.08) !important;
@@ -441,14 +444,14 @@ footer {
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 16px 34px rgba(0,0,0,0.28) !important;
 }
 
-.chat-input-container .stTextInput input::placeholder,
-.main-panel .stTextInput input::placeholder {
+div[data-testid="stForm"] .stTextInput input::placeholder,
+div[data-testid="stTextInputRootElement"] input::placeholder {
     color: var(--muted) !important;
 }
 
-.chat-input-container .stFormSubmitButton button,
-.main-panel .stButton button,
-.main-panel .stFormSubmitButton button {
+div[data-testid="stForm"] .stFormSubmitButton button,
+.stButton button,
+.stFormSubmitButton button {
     min-height: 58px !important;
     border-radius: 20px !important;
     border: 1px solid rgba(255,255,255,0.08) !important;
@@ -459,17 +462,21 @@ footer {
     box-shadow: 0 18px 40px rgba(0,0,0,0.32) !important;
 }
 
-.chat-input-container .stFormSubmitButton,
-.main-panel .stButton,
-.main-panel .stFormSubmitButton {
+div[data-testid="stForm"] .stFormSubmitButton,
+.stButton,
+.stFormSubmitButton {
     width: 100%;
 }
 
-.chat-input-container .stFormSubmitButton button:hover,
-.main-panel .stButton button:hover,
-.main-panel .stFormSubmitButton button:hover {
+div[data-testid="stForm"] .stFormSubmitButton button:hover,
+.stButton button:hover,
+.stFormSubmitButton button:hover {
     transform: translateY(-1px);
     filter: saturate(1.08);
+}
+
+section.main > div {
+    max-width: 1180px;
 }
 
 .stAlert {
@@ -598,12 +605,12 @@ hr {
         height: 46px;
     }
 
-    .chat-input-container div[data-testid="stHorizontalBlock"] {
+    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"] {
         flex-direction: column !important;
         gap: 0.8rem !important;
     }
 
-    .chat-input-container div[data-testid="column"] {
+    div[data-testid="stForm"] div[data-testid="column"] {
         width: 100% !important;
         flex: 1 1 100% !important;
     }
