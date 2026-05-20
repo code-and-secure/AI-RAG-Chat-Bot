@@ -235,7 +235,7 @@ elif current_page == "Public bots":
     render_hero("Choose a Pre-Configured Assistant")
     
     st.markdown("""
-    <div style='text-align: center; color: #555; max-width: 600px; margin: 0 auto 30px auto; font-size: 16px;'>
+    <div class='page-intro'>
         Instantly chat with preloaded domain-specific assistants without uploading any files.
     </div>
     """, unsafe_allow_html=True)
@@ -306,7 +306,7 @@ elif current_page == "Integrations":
     render_hero("Connect Your Workspace")
     
     st.markdown("""
-    <div style='text-align: center; color: #555; max-width: 600px; margin: 0 auto 30px auto; font-size: 16px;'>
+    <div class='page-intro'>
         Connect DocuMind to your tools to ingest documents directly or interact via chat channels.
     </div>
     """, unsafe_allow_html=True)

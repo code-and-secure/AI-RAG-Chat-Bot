@@ -16,9 +16,12 @@ def load_css():
 def render_sidebar():
     with st.sidebar:
         st.markdown("""
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px;">
-            <div style="font-size:24px; color: #00a67e;">✨</div>
-            <h3 style="margin:0; font-weight:600; color: var(--text-color);">DocuMind</h3>
+        <div class="sidebar-brand">
+            <div class="sidebar-brand-mark">DM</div>
+            <div>
+                <div class="sidebar-brand-name">DocuMind</div>
+                <div class="sidebar-brand-subtitle">Think. Execute. Repeat.</div>
+            </div>
         </div>
         """, unsafe_allow_html=True)
         
@@ -34,13 +37,13 @@ def render_sidebar():
         active_page = st.session_state.current_page
         active_css = ""
         if active_page == "Chat":
-            active_css = "div[data-testid='stSidebar'] button[key='nav_chat'] { background-color: var(--background-color) !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important; color: var(--text-color) !important; }"
+            active_css = "div[data-testid='stSidebar'] button[key='nav_chat'] { background: linear-gradient(135deg, rgba(255, 109, 63, 0.24), rgba(90, 255, 196, 0.18)) !important; border: 1px solid rgba(255,255,255,0.12) !important; font-weight: 600 !important; color: #f5f7fb !important; box-shadow: 0 16px 32px rgba(0,0,0,0.28) !important; }"
         elif active_page == "My bots":
-            active_css = "div[data-testid='stSidebar'] button[key='nav_my_bots'] { background-color: var(--background-color) !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important; color: var(--text-color) !important; }"
+            active_css = "div[data-testid='stSidebar'] button[key='nav_my_bots'] { background: linear-gradient(135deg, rgba(255, 109, 63, 0.24), rgba(90, 255, 196, 0.18)) !important; border: 1px solid rgba(255,255,255,0.12) !important; font-weight: 600 !important; color: #f5f7fb !important; box-shadow: 0 16px 32px rgba(0,0,0,0.28) !important; }"
         elif active_page == "Public bots":
-            active_css = "div[data-testid='stSidebar'] button[key='nav_public_bots'] { background-color: var(--background-color) !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important; color: var(--text-color) !important; }"
+            active_css = "div[data-testid='stSidebar'] button[key='nav_public_bots'] { background: linear-gradient(135deg, rgba(255, 109, 63, 0.24), rgba(90, 255, 196, 0.18)) !important; border: 1px solid rgba(255,255,255,0.12) !important; font-weight: 600 !important; color: #f5f7fb !important; box-shadow: 0 16px 32px rgba(0,0,0,0.28) !important; }"
         elif active_page == "Integrations":
-            active_css = "div[data-testid='stSidebar'] button[key='nav_integrations'] { background-color: var(--background-color) !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important; color: var(--text-color) !important; }"
+            active_css = "div[data-testid='stSidebar'] button[key='nav_integrations'] { background: linear-gradient(135deg, rgba(255, 109, 63, 0.24), rgba(90, 255, 196, 0.18)) !important; border: 1px solid rgba(255,255,255,0.12) !important; font-weight: 600 !important; color: #f5f7fb !important; box-shadow: 0 16px 32px rgba(0,0,0,0.28) !important; }"
             
         st.markdown(f"<style>{active_css}</style>", unsafe_allow_html=True)
 
