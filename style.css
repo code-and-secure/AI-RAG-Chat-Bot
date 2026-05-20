@@ -301,4 +301,142 @@ footer {visibility: hidden;}
     }
 }
 
+/* ==================================================
+   DARK MODE COMPATIBILITY (PREMIUM CYBER-NEON)
+   ================================================== */
+
+/* Detect standard systems or Streamlit dark mode settings */
+html[style*="color-scheme: dark"] [data-testid="stAppViewContainer"],
+.stApp[data-theme="dark"] [data-testid="stAppViewContainer"],
+[data-theme="dark"] [data-testid="stAppViewContainer"] {
+    background: radial-gradient(circle at 50% 50%, #0e1525 0%, #050814 45%, #190c23 100%) !important;
+    color: #f3f4f6 !important;
+}
+
+html[style*="color-scheme: dark"] .hero-title,
+.stApp[data-theme="dark"] .hero-title,
+[data-theme="dark"] .hero-title {
+    color: #f8fafc !important;
+}
+
+html[style*="color-scheme: dark"] [data-testid="stSidebar"],
+.stApp[data-theme="dark"] [data-testid="stSidebar"],
+[data-theme="dark"] [data-testid="stSidebar"] {
+    background-color: #0b0f19 !important;
+    border-right: 1px solid #1e293b !important;
+}
+
+html[style*="color-scheme: dark"] .sidebar-item,
+.stApp[data-theme="dark"] .sidebar-item,
+[data-theme="dark"] .sidebar-item {
+    color: #cbd5e1 !important;
+}
+
+html[style*="color-scheme: dark"] [data-testid="stSidebar"] button,
+.stApp[data-theme="dark"] [data-testid="stSidebar"] button,
+[data-theme="dark"] [data-testid="stSidebar"] button {
+    color: #cbd5e1 !important;
+}
+
+html[style*="color-scheme: dark"] [data-testid="stSidebar"] button:hover,
+.stApp[data-theme="dark"] [data-testid="stSidebar"] button:hover,
+[data-theme="dark"] [data-testid="stSidebar"] button:hover {
+    background-color: #1e293b !important;
+}
+
+html[style*="color-scheme: dark"] div[data-testid='stSidebar'] button[key='nav_chat'],
+html[style*="color-scheme: dark"] div[data-testid='stSidebar'] button[key='nav_my_bots'],
+html[style*="color-scheme: dark"] div[data-testid='stSidebar'] button[key='nav_public_bots'],
+html[style*="color-scheme: dark"] div[data-testid='stSidebar'] button[key='nav_integrations'],
+.stApp[data-theme="dark"] div[data-testid='stSidebar'] button[key='nav_chat'],
+.stApp[data-theme="dark"] div[data-testid='stSidebar'] button[key='nav_my_bots'],
+.stApp[data-theme="dark"] div[data-testid='stSidebar'] button[key='nav_public_bots'],
+.stApp[data-theme="dark"] div[data-testid='stSidebar'] button[key='nav_integrations'] {
+    background-color: #1e293b !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+    color: #ffffff !important;
+}
+
+html[style*="color-scheme: dark"] .card,
+.stApp[data-theme="dark"] .card,
+[data-theme="dark"] .card {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border: 1px solid #334155 !important;
+    color: #e2e8f0 !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+}
+
+html[style*="color-scheme: dark"] .card:hover,
+.stApp[data-theme="dark"] .card:hover,
+[data-theme="dark"] .card:hover {
+    border-color: #475569 !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+
+html[style*="color-scheme: dark"] .card-title,
+.stApp[data-theme="dark"] .card-title,
+[data-theme="dark"] .card-title {
+    color: #f8fafc !important;
+}
+
+html[style*="color-scheme: dark"] .card-desc,
+.stApp[data-theme="dark"] .card-desc,
+[data-theme="dark"] .card-desc {
+    color: #94a3b8 !important;
+}
+
+html[style*="color-scheme: dark"] .chat-input-container .stTextInput input,
+.stApp[data-theme="dark"] .chat-input-container .stTextInput input,
+[data-theme="dark"] .chat-input-container .stTextInput input {
+    background: #0f172a !important;
+    border: 1px solid #334155 !important;
+    color: #f8fafc !important;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2) !important;
+}
+
+html[style*="color-scheme: dark"] .chat-input-container .stTextInput input:focus,
+.stApp[data-theme="dark"] .chat-input-container .stTextInput input:focus,
+[data-theme="dark"] .chat-input-container .stTextInput input:focus {
+    border-color: #475569 !important;
+}
+
+html[style*="color-scheme: dark"] .chat-input-container .stFormSubmitButton button,
+.stApp[data-theme="dark"] .chat-input-container .stFormSubmitButton button,
+[data-theme="dark"] .chat-input-container .stFormSubmitButton button {
+    background: #1e293b !important;
+    border: 1px solid #475569 !important;
+    color: #e2e8f0 !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+}
+
+html[style*="color-scheme: dark"] .chat-input-container .stFormSubmitButton button:hover,
+.stApp[data-theme="dark"] .chat-input-container .stFormSubmitButton button:hover,
+[data-theme="dark"] .chat-input-container .stFormSubmitButton button:hover {
+    background: #334155 !important;
+    color: #ffffff !important;
+}
+
+html[style*="color-scheme: dark"] .response-box,
+.stApp[data-theme="dark"] .response-box,
+[data-theme="dark"] .response-box {
+    background: rgba(15, 23, 42, 0.7) !important;
+    border: 1px solid #1e293b !important;
+    color: #e2e8f0 !important;
+}
+
+html[style*="color-scheme: dark"] [data-testid="stSidebar"] .stTextInput input,
+.stApp[data-theme="dark"] [data-testid="stSidebar"] .stTextInput input,
+[data-theme="dark"] [data-testid="stSidebar"] .stTextInput input {
+    background-color: #0f172a !important;
+    border: 1px solid #334155 !important;
+    color: #cbd5e1 !important;
+}
+
+html[style*="color-scheme: dark"] label,
+.stApp[data-theme="dark"] label,
+[data-theme="dark"] label {
+    color: #cbd5e1 !important;
+}
+
+
 
