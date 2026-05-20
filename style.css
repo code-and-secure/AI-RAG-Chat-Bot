@@ -1,23 +1,28 @@
 /* ==================================================
-   LIGHT THEME VARIABLES (Responsive Premium Light Mode)
+   Streamlit Theme-Aware Styling
    ================================================== */
 :root {
-    --background-color: #ffffff !important;              /* Main background */
-    --secondary-background-color: #f4f8fc !important;    /* Sidebar / cards */
-    --text-color: #1a1a1a !important;                    /* Primary text */
-    --primary-color: #00a67e !important;                 /* Accent / buttons */
+    --primary-color: #00a67e !important;
+    --surface-color: color-mix(in srgb, var(--background-color, #ffffff) 86%, var(--secondary-background-color, #f4f8fc));
+    --surface-strong: color-mix(in srgb, var(--secondary-background-color, #f4f8fc) 92%, var(--background-color, #ffffff));
+    --border-color: color-mix(in srgb, var(--text-color, #111827) 14%, var(--background-color, #ffffff));
+    --muted-text-color: color-mix(in srgb, var(--text-color, #111827) 62%, var(--background-color, #ffffff));
+    --hover-color: color-mix(in srgb, var(--secondary-background-color, #f4f8fc) 78%, var(--text-color, #111827) 8%);
 }
 
 /* Base page style */
 [data-testid="stAppViewContainer"] {
-    background: radial-gradient(circle at 50% 50%, #f4faff 0%, #e1f0fb 30%, #fbeff8 70%, #dbefff 100%) !important;
-    color: var(--text-color) !important;
+    background:
+        radial-gradient(circle at 50% 38%, color-mix(in srgb, var(--background-color, #ffffff) 70%, #8bc7ff) 0%, transparent 26%),
+        radial-gradient(circle at 82% 12%, color-mix(in srgb, var(--background-color, #ffffff) 80%, #f5b8d7) 0%, transparent 18%),
+        linear-gradient(135deg, color-mix(in srgb, var(--background-color, #ffffff) 94%, white) 0%, color-mix(in srgb, var(--secondary-background-color, #f4f8fc) 92%, var(--background-color, #ffffff)) 55%, color-mix(in srgb, var(--background-color, #ffffff) 88%, #f7d8ea) 100%) !important;
+    color: var(--text-color, #1a1a1a) !important;
     font-family: 'Inter', sans-serif;
 }
 
 [data-testid="stSidebar"] {
-    background-color: var(--secondary-background-color) !important;
-    border-right: 1px solid #e1e8f0 !important;
+    background-color: var(--secondary-background-color, #f4f8fc) !important;
+    border-right: 1px solid var(--border-color) !important;
 }
 
 /* Sidebar items */
@@ -27,48 +32,48 @@
     border-radius: 8px;
     cursor: pointer;
     font-weight: 500;
-    color: var(--text-color);
+    color: var(--text-color, #1a1a1a);
     display: flex;
     align-items: center;
     gap: 10px;
     transition: background 0.2s;
 }
-.sidebar-item:hover { background-color: #e1e8f0; }
-.sidebar-item.active { background-color: var(--background-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.sidebar-item:hover { background-color: var(--hover-color); }
+.sidebar-item.active { background-color: var(--background-color, #ffffff); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
 
 /* Top navigation */
 .top-nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; width: 100%; }
-.breadcrumbs { font-size: 18px; color: var(--text-color) !important; }
-.profile-top-right { background: #ffdbf0; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #cc0066; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; }
+.breadcrumbs { font-size: 18px; color: var(--text-color, #1a1a1a) !important; }
+.profile-top-right { background: color-mix(in srgb, var(--primary-color) 18%, var(--secondary-background-color, #f4f8fc)); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--primary-color); box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: 1px solid var(--border-color); }
 
 /* Hero section */
 .hero-container { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 40vh; margin-top: 20px; }
-.avatar-container { width: 220px; height: 220px; border-radius: 50%; overflow: hidden; margin-bottom: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 4px solid rgba(255,255,255,0.6); }
+.avatar-container { width: 220px; height: 220px; border-radius: 50%; overflow: hidden; margin-bottom: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 4px solid color-mix(in srgb, var(--background-color, #ffffff) 72%, transparent); }
 .avatar-img { width:100%; height:100%; object-fit:cover; }
-.hero-title { font-size: 36px !important; font-weight: 600 !important; color: var(--text-color) !important; margin-bottom: 40px; text-align: center; }
+.hero-title { font-size: 36px !important; font-weight: 600 !important; color: var(--text-color, #1a1a1a) !important; margin-bottom: 40px; text-align: center; }
 
 /* Sidebar search */
 [data-testid="stSidebar"] .stTextInput { width:100% !important; }
 [data-testid="stSidebar"] .stTextInput input {
-    background-color: #ffffff !important; border: 1px solid #e2e8f0 !important; border-radius: 12px !important; color: var(--text-color) !important; font-size:14px !important; height:40px !important; padding:8px 12px !important; transition: all 0.2s ease-in-out; }
-[data-testid="stSidebar"] .stTextInput input::placeholder { color:#a0aec0 !important; }
+    background-color: var(--background-color, #ffffff) !important; border: 1px solid var(--border-color) !important; border-radius: 12px !important; color: var(--text-color, #1a1a1a) !important; font-size:14px !important; height:40px !important; padding:8px 12px !important; transition: all 0.2s ease-in-out; }
+[data-testid="stSidebar"] .stTextInput input::placeholder { color:var(--muted-text-color) !important; }
 [data-testid="stSidebar"] .stTextInput input:focus { border-color: var(--primary-color) !important; box-shadow:0 0 0 3px rgba(0,166,126,0.15) !important; outline:none !important; }
 
 /* Chat input */
 .chat-input-container { max-width:800px; margin:0 auto; padding:10px 0; }
 .chat-input-container [data-testid="stForm"] { border:none !important; background:transparent !important; padding:0 !important; margin:0 !important; }
 .chat-input-container .stTextInput input {
-    background:#ffffff !important; border:1px solid #e2e8f0 !important; border-radius:30px !important; padding:15px 25px !important; font-size:16px !important; color: var(--text-color) !important; height:56px !important; transition: all 0.2s ease-in-out; }
-.chat-input-container .stTextInput input::placeholder { color:#a0aec0 !important; }
+    background:var(--background-color, #ffffff) !important; border:1px solid var(--border-color) !important; border-radius:30px !important; padding:15px 25px !important; font-size:16px !important; color: var(--text-color, #1a1a1a) !important; height:56px !important; transition: all 0.2s ease-in-out; }
+.chat-input-container .stTextInput input::placeholder { color:var(--muted-text-color) !important; }
 .chat-input-container .stTextInput input:focus { box-shadow:0 8px 30px rgba(0,0,0,0.08) !important; border-color: var(--primary-color) !important; }
 
 /* Submit button */
 .chat-input-container .stFormSubmitButton button {
-    border-radius:30px !important; background: var(--secondary-background-color) !important; border:1px solid var(--secondary-background-color) !important; color: var(--text-color) !important; height:56px !important; font-size:15px !important; font-weight:500 !important; box-shadow:0 2px 10px rgba(0,0,0,0.02) !important; transition: all 0.2s ease-in-out; }
-.chat-input-container .stFormSubmitButton button:hover { background: var(--background-color) !important; border-color: var(--primary-color) !important; color: var(--primary-color) !important; transform:translateY(-1px); }
+    border-radius:30px !important; background: var(--surface-strong) !important; border:1px solid var(--border-color) !important; color: var(--text-color, #1a1a1a) !important; height:56px !important; font-size:15px !important; font-weight:500 !important; box-shadow:0 2px 10px rgba(0,0,0,0.02) !important; transition: all 0.2s ease-in-out; }
+.chat-input-container .stFormSubmitButton button:hover { background: var(--background-color, #ffffff) !important; border-color: var(--primary-color) !important; color: var(--primary-color) !important; transform:translateY(-1px); }
 
 /* Response boxes */
-.response-box { background: rgba(255,255,255,0.8) !important; border-radius:15px; padding:20px; box-shadow:0 4px 15px rgba(0,0,0,0.03); color: var(--text-color) !important; margin-bottom:20px; border:1px solid #e1e8f0; }
+.response-box { background: color-mix(in srgb, var(--background-color, #ffffff) 78%, var(--secondary-background-color, #f4f8fc)) !important; border-radius:15px; padding:20px; box-shadow:0 4px 15px rgba(0,0,0,0.03); color: var(--text-color, #1a1a1a) !important; margin-bottom:20px; border:1px solid var(--border-color); }
 
 /* Hide Streamlit header items */
 [data-testid="stHeader"] { background-color:transparent !important; }
@@ -78,40 +83,40 @@ footer {visibility:hidden;}
 
 /* Cards */
 .card-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; max-width:800px; margin:0 auto; padding:20px 0; }
-.card { background:rgba(255,255,255,0.7) !important; border:1px solid #e2e8f0 !important; border-radius:16px !important; padding:24px !important; text-align:center !important; box-shadow:0 4px 15px rgba(0,0,0,0.02) !important; transition:transform 0.2s, box-shadow 0.2s !important; }
+.card { background:var(--surface-color) !important; border:1px solid var(--border-color) !important; border-radius:16px !important; padding:24px !important; text-align:center !important; box-shadow:0 4px 15px rgba(0,0,0,0.02) !important; transition:transform 0.2s, box-shadow 0.2s !important; }
 .card:hover { transform:translateY(-4px) !important; box-shadow:0 10px 25px rgba(0,0,0,0.06) !important; border-color: var(--primary-color) !important; }
 .card-icon { font-size:40px; margin-bottom:15px; }
-.card-title { font-size:18px; font-weight:600; color: var(--text-color) !important; margin-bottom:10px; }
-.card-desc { font-size:14px; color:#718096 !important; margin-bottom:20px; line-height:1.5; }
+.card-title { font-size:18px; font-weight:600; color: var(--text-color, #1a1a1a) !important; margin-bottom:10px; }
+.card-desc { font-size:14px; color:var(--muted-text-color) !important; margin-bottom:20px; line-height:1.5; }
 
 /* Main content controls */
 .main-panel [data-testid="stFileUploader"] {
-    background: rgba(255,255,255,0.72) !important;
-    border: 1px solid #d9e3ee !important;
+    background: var(--surface-color) !important;
+    border: 1px solid var(--border-color) !important;
     border-radius: 16px !important;
     padding: 12px !important;
 }
 
 .main-panel [data-testid="stFileUploader"] * {
-    color: var(--text-color) !important;
+    color: var(--text-color, #1a1a1a) !important;
 }
 
 .main-panel .stTextInput input {
-    background:#ffffff !important;
-    border:1px solid #e2e8f0 !important;
+    background:var(--background-color, #ffffff) !important;
+    border:1px solid var(--border-color) !important;
     border-radius:14px !important;
-    color: var(--text-color) !important;
+    color: var(--text-color, #1a1a1a) !important;
 }
 
 .main-panel .stTextInput input::placeholder {
-    color:#94a3b8 !important;
+    color:var(--muted-text-color) !important;
 }
 
 .main-panel .stButton button,
 .main-panel .stFormSubmitButton button {
-    background: rgba(255,255,255,0.84) !important;
-    border: 1px solid #d9e3ee !important;
-    color: var(--text-color) !important;
+    background: var(--surface-strong) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-color, #1a1a1a) !important;
     border-radius: 14px !important;
 }
 
@@ -139,94 +144,9 @@ footer {visibility:hidden;}
 
 /* Sidebar button overrides */
 [data-testid="stSidebar"] button { background-color:transparent !important; border:none !important; color: var(--text-color) !important; text-align:left !important; justify-content:flex-start !important; font-weight:500 !important; font-size:15px !important; padding:12px 15px !important; border-radius:8px !important; transition:background 0.2s !important; margin:2px 0 !important; }
-[data-testid="stSidebar"] button:hover { background-color:#e1e8f0 !important; }
+[data-testid="stSidebar"] button:hover { background-color:var(--hover-color) !important; }
 
 /* Markdown text color fix */
-.stMarkdown p, .stMarkdown span, .stMarkdown div, .stMarkdown strong { color: var(--text-color) !important; }
-/* ---------- Dark Mode Overrides ---------- */
-html[data-theme='dark'],
-body[data-theme='dark'],
-[data-theme='dark'] {
-    --background-color: #0c0e12 !important;
-    --secondary-background-color: #171a21 !important;
-    --text-color: #fafafa !important;
-    --primary-color: #00a67e !important;
-}
-/* Dark page background */
-[data-theme='dark'] [data-testid="stAppViewContainer"] {
-    background: radial-gradient(circle at 50% 50%, #1c202a 0%, #0c0e12 100%) !important;
-    color: var(--text-color) !important;
-}
-/* Dark sidebar */
-[data-theme='dark'] [data-testid="stSidebar"] {
-    background-color: #12151c !important;
-    border-right: 1px solid #1c1e24 !important;
-}
-/* Dark cards */
-[data-theme='dark'] .card {
-    background: rgba(23,26,33,0.7) !important;
-    border: 1px solid #282d3b !important;
-    color: #ffffff !important;
-}
-[data-theme='dark'] .card-title,
-[data-theme='dark'] .card-desc {
-    color: #ffffff !important;
-}
-/* Dark response box */
-[data-theme='dark'] .response-box {
-    background: rgba(23,26,33,0.8) !important;
-    border: 1px solid #282d3b !important;
-    color: #fafafa !important;
-}
-/* Dark hero title */
-[data-theme='dark'] .hero-title {
-    color: #ffffff !important;
-}
-/* Dark input fields */
-[data-theme='dark'] [data-testid="stSidebar"] .stTextInput input,
-[data-theme='dark'] .chat-input-container .stTextInput input {
-    background: #171a21 !important;
-    border: 1px solid #282d3b !important;
-    color: #fafafa !important;
-}
-/* Dark buttons */
-[data-theme='dark'] .chat-input-container .stFormSubmitButton button {
-    background: #171a21 !important;
-    border: 1px solid #282d3b !important;
-    color: #fafafa !important;
-}
-/* Dark button hover */
-[data-theme='dark'] .chat-input-container .stFormSubmitButton button:hover {
-    background: #1c202a !important;
-    border-color: var(--primary-color) !important;
-    color: var(--primary-color) !important;
-}
-
-[data-theme='dark'] .main-panel [data-testid="stFileUploader"] {
-    background: rgba(23,26,33,0.82) !important;
-    border-color: #282d3b !important;
-}
-
-[data-theme='dark'] .main-panel .stButton button,
-[data-theme='dark'] .main-panel .stFormSubmitButton button {
-    background: #171a21 !important;
-    border-color: #282d3b !important;
-    color: #fafafa !important;
-}
-
-[data-theme='dark'] .main-panel .stTextInput input {
-    background: #171a21 !important;
-    border-color: #282d3b !important;
-    color: #fafafa !important;
-}
-
-[data-theme='dark'] .main-panel .stTextInput input::placeholder {
-    color: #94a3b8 !important;
-}
-/* Ensure sidebar button text stays readable */
-[data-theme='dark'] [data-testid="stSidebar"] button {
-    color: #cbd5e1 !important;
-}
-/* End of Dark Mode Overrides */
+.stMarkdown p, .stMarkdown span, .stMarkdown div, .stMarkdown strong { color: var(--text-color, #1a1a1a) !important; }
 
 
