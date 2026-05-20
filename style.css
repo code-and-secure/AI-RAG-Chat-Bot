@@ -183,8 +183,15 @@
     margin-bottom: 20px;
 }
 
-/* Hide streamlit headers/footers */
-header {visibility: hidden;}
+/* Hide standard Streamlit header options (Deploy button and settings hamburger) */
+[data-testid="stHeader"] {
+    background-color: transparent !important;
+}
+[data-testid="stHeader"] .stDeployButton,
+[data-testid="stHeader"] [data-testid="stHeaderActionGroup"] {
+    display: none !important;
+}
+
 footer {visibility: hidden;}
 
 /* =========================
@@ -233,4 +240,65 @@ footer {visibility: hidden;}
     margin-bottom: 20px;
     line-height: 1.5;
 }
+
+/* =========================
+   MOBILE RESPONSIVENESS
+   ========================= */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 28px !important;
+        margin-bottom: 25px !important;
+    }
+    
+    .avatar-container {
+        width: 160px !important;
+        height: 160px !important;
+    }
+    
+    .top-nav {
+        padding: 5px 10px !important;
+    }
+
+    .breadcrumbs {
+        font-size: 15px !important;
+    }
+    
+    .profile-top-right {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width: 640px) {
+    /* Prevent standard Streamlit horizontal columns from stacking vertically on mobile */
+    .chat-input-container div[data-testid="stHorizontalBlock"] {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+    
+    .chat-input-container div[data-testid="column"] {
+        width: auto !important;
+        flex: 1 1 auto !important;
+    }
+    
+    .chat-input-container div[data-testid="column"]:last-child {
+        flex: 0 0 75px !important;
+    }
+    
+    .chat-input-container .stTextInput input {
+        height: 48px !important;
+        font-size: 14px !important;
+        padding: 10px 15px !important;
+    }
+    
+    .chat-input-container .stFormSubmitButton button {
+        height: 48px !important;
+        font-size: 13px !important;
+        padding: 0 10px !important;
+    }
+}
+
 
