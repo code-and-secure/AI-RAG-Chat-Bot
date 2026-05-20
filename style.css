@@ -1,22 +1,24 @@
-/* Custom Light Theme CSS */
+/* Custom Light & Dark Theme CSS using native Streamlit variables */
+
 [data-testid="stAppViewContainer"] {
-    background: radial-gradient(circle at 50% 50%, #f4faff 0%, #e1f0fb 30%, #fbeff8 70%, #dbefff 100%);
-    color: #111;
+    background: radial-gradient(circle at 50% 50%, var(--background-color) 0%, var(--secondary-background-color) 100%) !important;
+    color: var(--text-color) !important;
     font-family: 'Inter', sans-serif;
 }
 
 [data-testid="stSidebar"] {
-    background-color: #f4f8fc !important;
-    border-right: 1px solid #e1e8f0;
+    background-color: var(--secondary-background-color) !important;
+    border-right: 1px solid var(--background-color) !important;
 }
 
+/* Sidebar items styling */
 .sidebar-item {
     padding: 12px 15px;
     margin: 5px 0;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 500;
-    color: #333;
+    color: var(--text-color);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -24,10 +26,11 @@
 }
 
 .sidebar-item:hover {
-    background-color: #e1e8f0;
+    background-color: var(--background-color);
 }
+
 .sidebar-item.active {
-    background-color: #ffffff;
+    background-color: var(--background-color);
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
@@ -41,11 +44,11 @@
 
 .breadcrumbs {
     font-size: 18px;
-    color: #333;
+    color: var(--text-color);
 }
 
 .profile-top-right {
-    background: #ffdbf0;
+    background: var(--secondary-background-color);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -53,8 +56,9 @@
     align-items: center;
     justify-content: center;
     font-size: 20px;
-    color: #cc0066;
+    color: var(--text-color);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: 1px solid var(--background-color);
 }
 
 .hero-container {
@@ -62,7 +66,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 45vh;
+    min-height: 40vh;
     position: relative;
     margin-top: 20px;
 }
@@ -74,7 +78,7 @@
     overflow: hidden;
     margin-bottom: 25px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    border: 4px solid rgba(255,255,255,0.6);
+    border: 4px solid var(--secondary-background-color);
 }
 
 .avatar-img {
@@ -86,7 +90,7 @@
 .hero-title {
     font-size: 36px !important;
     font-weight: 600 !important;
-    color: #1a1a1a;
+    color: var(--text-color) !important;
     margin-bottom: 40px;
     text-align: center;
 }
@@ -99,10 +103,10 @@
 }
 
 [data-testid="stSidebar"] .stTextInput input {
-    background-color: #ffffff !important;
-    border: 1px solid #e2e8f0 !important;
+    background-color: var(--background-color) !important;
+    border: 1px solid var(--secondary-background-color) !important;
     border-radius: 12px !important;
-    color: #4a5568 !important;
+    color: var(--text-color) !important;
     font-size: 14px !important;
     height: 40px !important;
     padding: 8px 12px !important;
@@ -111,12 +115,13 @@
 }
 
 [data-testid="stSidebar"] .stTextInput input::placeholder {
-    color: #a0aec0 !important;
+    color: var(--text-color) !important;
+    opacity: 0.5;
 }
 
 [data-testid="stSidebar"] .stTextInput input:focus {
-    border-color: #cbd5e0 !important;
-    box-shadow: 0 0 0 3px rgba(226, 232, 240, 0.5) !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(0, 166, 126, 0.15) !important;
     outline: none !important;
 }
 
@@ -138,28 +143,33 @@
 }
 
 .chat-input-container .stTextInput input {
-    background: #ffffff !important;
-    border: 1px solid #e2e8f0 !important;
+    background: var(--background-color) !important;
+    border: 1px solid var(--secondary-background-color) !important;
     border-radius: 30px !important;
     padding: 15px 25px !important;
     box-shadow: 0 5px 25px rgba(0,0,0,0.05) !important;
     font-size: 16px !important;
-    color: #1a202c !important;
+    color: var(--text-color) !important;
     height: 56px !important;
     transition: all 0.2s ease-in-out;
 }
 
+.chat-input-container .stTextInput input::placeholder {
+    color: var(--text-color) !important;
+    opacity: 0.6;
+}
+
 .chat-input-container .stTextInput input:focus {
     box-shadow: 0 8px 30px rgba(0,0,0,0.08) !important;
-    border: 1px solid #cbd5e0 !important;
+    border-color: var(--primary-color) !important;
 }
 
 /* Buttons */
 .chat-input-container .stFormSubmitButton button {
     border-radius: 30px !important;
-    background: #ffffff !important;
-    border: 1px solid #cbd5e0 !important;
-    color: #4a5568 !important;
+    background: var(--secondary-background-color) !important;
+    border: 1px solid var(--secondary-background-color) !important;
+    color: var(--text-color) !important;
     height: 56px !important;
     font-size: 15px !important;
     font-weight: 500 !important;
@@ -168,19 +178,20 @@
 }
 
 .chat-input-container .stFormSubmitButton button:hover {
-    background: #f7fafc !important;
-    border-color: #a0aec0 !important;
-    color: #2d3748 !important;
+    background: var(--background-color) !important;
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
     transform: translateY(-1px);
 }
 
 .response-box {
-    background: rgba(255,255,255,0.8);
+    background: var(--secondary-background-color);
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 20px;
+    border: 1px solid var(--background-color);
 }
 
 /* Hide standard Streamlit header options (Deploy button and settings hamburger) */
@@ -207,8 +218,8 @@ footer {visibility: hidden;}
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.7) !important;
-    border: 1px solid #e2e8f0 !important;
+    background: var(--secondary-background-color) !important;
+    border: 1px solid var(--background-color) !important;
     border-radius: 16px !important;
     padding: 24px !important;
     text-align: center !important;
@@ -219,7 +230,7 @@ footer {visibility: hidden;}
 .card:hover {
     transform: translateY(-4px) !important;
     box-shadow: 0 10px 25px rgba(0,0,0,0.06) !important;
-    border-color: #cbd5e0 !important;
+    border-color: var(--primary-color) !important;
 }
 
 .card-icon {
@@ -230,13 +241,14 @@ footer {visibility: hidden;}
 .card-title {
     font-size: 18px;
     font-weight: 600;
-    color: #2d3748;
+    color: var(--text-color);
     margin-bottom: 10px;
 }
 
 .card-desc {
     font-size: 14px;
-    color: #718096;
+    color: var(--text-color);
+    opacity: 0.8;
     margin-bottom: 20px;
     line-height: 1.5;
 }
@@ -301,142 +313,23 @@ footer {visibility: hidden;}
     }
 }
 
-/* ==================================================
-   DARK MODE COMPATIBILITY (PREMIUM CYBER-NEON)
-   ================================================== */
-
-/* Detect standard systems or Streamlit dark mode settings */
-html[style*="color-scheme: dark"] [data-testid="stAppViewContainer"],
-.stApp[data-theme="dark"] [data-testid="stAppViewContainer"],
-[data-theme="dark"] [data-testid="stAppViewContainer"] {
-    background: radial-gradient(circle at 50% 50%, #0e1525 0%, #050814 45%, #190c23 100%) !important;
-    color: #f3f4f6 !important;
+/* =========================
+   CUSTOM STREAMLIT SYSTEM OVERRIDES
+   ========================= */
+[data-testid="stSidebar"] button {
+    background-color: transparent !important;
+    border: none !important;
+    color: var(--text-color) !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    font-weight: 500 !important;
+    font-size: 15px !important;
+    padding: 12px 15px !important;
+    border-radius: 8px !important;
+    transition: background 0.2s !important;
+    margin: 2px 0 !important;
 }
 
-html[style*="color-scheme: dark"] .hero-title,
-.stApp[data-theme="dark"] .hero-title,
-[data-theme="dark"] .hero-title {
-    color: #f8fafc !important;
+[data-testid="stSidebar"] button:hover {
+    background-color: var(--background-color) !important;
 }
-
-html[style*="color-scheme: dark"] [data-testid="stSidebar"],
-.stApp[data-theme="dark"] [data-testid="stSidebar"],
-[data-theme="dark"] [data-testid="stSidebar"] {
-    background-color: #0b0f19 !important;
-    border-right: 1px solid #1e293b !important;
-}
-
-html[style*="color-scheme: dark"] .sidebar-item,
-.stApp[data-theme="dark"] .sidebar-item,
-[data-theme="dark"] .sidebar-item {
-    color: #cbd5e1 !important;
-}
-
-html[style*="color-scheme: dark"] [data-testid="stSidebar"] button,
-.stApp[data-theme="dark"] [data-testid="stSidebar"] button,
-[data-theme="dark"] [data-testid="stSidebar"] button {
-    color: #cbd5e1 !important;
-}
-
-html[style*="color-scheme: dark"] [data-testid="stSidebar"] button:hover,
-.stApp[data-theme="dark"] [data-testid="stSidebar"] button:hover,
-[data-theme="dark"] [data-testid="stSidebar"] button:hover {
-    background-color: #1e293b !important;
-}
-
-html[style*="color-scheme: dark"] div[data-testid='stSidebar'] button[key='nav_chat'],
-html[style*="color-scheme: dark"] div[data-testid='stSidebar'] button[key='nav_my_bots'],
-html[style*="color-scheme: dark"] div[data-testid='stSidebar'] button[key='nav_public_bots'],
-html[style*="color-scheme: dark"] div[data-testid='stSidebar'] button[key='nav_integrations'],
-.stApp[data-theme="dark"] div[data-testid='stSidebar'] button[key='nav_chat'],
-.stApp[data-theme="dark"] div[data-testid='stSidebar'] button[key='nav_my_bots'],
-.stApp[data-theme="dark"] div[data-testid='stSidebar'] button[key='nav_public_bots'],
-.stApp[data-theme="dark"] div[data-testid='stSidebar'] button[key='nav_integrations'] {
-    background-color: #1e293b !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
-    color: #ffffff !important;
-}
-
-html[style*="color-scheme: dark"] .card,
-.stApp[data-theme="dark"] .card,
-[data-theme="dark"] .card {
-    background: rgba(15, 23, 42, 0.6) !important;
-    border: 1px solid #334155 !important;
-    color: #e2e8f0 !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
-}
-
-html[style*="color-scheme: dark"] .card:hover,
-.stApp[data-theme="dark"] .card:hover,
-[data-theme="dark"] .card:hover {
-    border-color: #475569 !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-}
-
-html[style*="color-scheme: dark"] .card-title,
-.stApp[data-theme="dark"] .card-title,
-[data-theme="dark"] .card-title {
-    color: #f8fafc !important;
-}
-
-html[style*="color-scheme: dark"] .card-desc,
-.stApp[data-theme="dark"] .card-desc,
-[data-theme="dark"] .card-desc {
-    color: #94a3b8 !important;
-}
-
-html[style*="color-scheme: dark"] .chat-input-container .stTextInput input,
-.stApp[data-theme="dark"] .chat-input-container .stTextInput input,
-[data-theme="dark"] .chat-input-container .stTextInput input {
-    background: #0f172a !important;
-    border: 1px solid #334155 !important;
-    color: #f8fafc !important;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.2) !important;
-}
-
-html[style*="color-scheme: dark"] .chat-input-container .stTextInput input:focus,
-.stApp[data-theme="dark"] .chat-input-container .stTextInput input:focus,
-[data-theme="dark"] .chat-input-container .stTextInput input:focus {
-    border-color: #475569 !important;
-}
-
-html[style*="color-scheme: dark"] .chat-input-container .stFormSubmitButton button,
-.stApp[data-theme="dark"] .chat-input-container .stFormSubmitButton button,
-[data-theme="dark"] .chat-input-container .stFormSubmitButton button {
-    background: #1e293b !important;
-    border: 1px solid #475569 !important;
-    color: #e2e8f0 !important;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
-}
-
-html[style*="color-scheme: dark"] .chat-input-container .stFormSubmitButton button:hover,
-.stApp[data-theme="dark"] .chat-input-container .stFormSubmitButton button:hover,
-[data-theme="dark"] .chat-input-container .stFormSubmitButton button:hover {
-    background: #334155 !important;
-    color: #ffffff !important;
-}
-
-html[style*="color-scheme: dark"] .response-box,
-.stApp[data-theme="dark"] .response-box,
-[data-theme="dark"] .response-box {
-    background: rgba(15, 23, 42, 0.7) !important;
-    border: 1px solid #1e293b !important;
-    color: #e2e8f0 !important;
-}
-
-html[style*="color-scheme: dark"] [data-testid="stSidebar"] .stTextInput input,
-.stApp[data-theme="dark"] [data-testid="stSidebar"] .stTextInput input,
-[data-theme="dark"] [data-testid="stSidebar"] .stTextInput input {
-    background-color: #0f172a !important;
-    border: 1px solid #334155 !important;
-    color: #cbd5e1 !important;
-}
-
-html[style*="color-scheme: dark"] label,
-.stApp[data-theme="dark"] label,
-[data-theme="dark"] label {
-    color: #cbd5e1 !important;
-}
-
-
-
