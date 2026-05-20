@@ -82,7 +82,7 @@ def load_mock_bot_data(bot_name, mock_texts, source_name):
 if current_page == "Chat" or current_page == "My bots":
     render_hero("Hello, how can I help today?")
     
-    st.markdown("<div style='max-width:800px; margin: 0 auto;'>", unsafe_allow_html=True)
+    st.markdown("<div class='main-panel' style='max-width:800px; margin: 0 auto;'>", unsafe_allow_html=True)
     
     # 1. FILE UPLOADER
     if not st.session_state.file_uploaded:
@@ -129,6 +129,7 @@ if current_page == "Chat" or current_page == "My bots":
     st.markdown("<div style='margin-top: 20px;'></div>", unsafe_allow_html=True)
 
     # 2. CHAT INPUT FORM
+    st.markdown("<div class='chat-input-container'>", unsafe_allow_html=True)
     with st.form(key="search_form", clear_on_submit=False):
         query_col1, query_col2 = st.columns([6, 1])
         with query_col1:
@@ -140,6 +141,7 @@ if current_page == "Chat" or current_page == "My bots":
             )
         with query_col2:
             search_clicked = st.form_submit_button("Send", use_container_width=True)
+    st.markdown("</div>", unsafe_allow_html=True)
 
     # 3. QUERY PROCESSING
     if query and search_clicked:

@@ -1,18 +1,11 @@
 /* ==================================================
    LIGHT THEME VARIABLES (Responsive Premium Light Mode)
    ================================================== */
-:root,
-.stApp,
-[data-testid="stAppViewContainer"],
-[data-testid="stSidebar"],
-[data-testid="stForm"],
-.stTextInput,
-.stButton,
-.stFileUploader {
-    --background-color: #ffffff !important;               /* Main background */
-    --secondary-background-color: #f4f8fc !important;   /* Sidebar / cards */
-    --text-color: #1a1a1a !important;                   /* Primary text */
-    --primary-color: #00a67e !important;                /* Accent / buttons */
+:root {
+    --background-color: #ffffff !important;              /* Main background */
+    --secondary-background-color: #f4f8fc !important;    /* Sidebar / cards */
+    --text-color: #1a1a1a !important;                    /* Primary text */
+    --primary-color: #00a67e !important;                 /* Accent / buttons */
 }
 
 /* Base page style */
@@ -91,6 +84,43 @@ footer {visibility:hidden;}
 .card-title { font-size:18px; font-weight:600; color: var(--text-color) !important; margin-bottom:10px; }
 .card-desc { font-size:14px; color:#718096 !important; margin-bottom:20px; line-height:1.5; }
 
+/* Main content controls */
+.main-panel [data-testid="stFileUploader"] {
+    background: rgba(255,255,255,0.72) !important;
+    border: 1px solid #d9e3ee !important;
+    border-radius: 16px !important;
+    padding: 12px !important;
+}
+
+.main-panel [data-testid="stFileUploader"] * {
+    color: var(--text-color) !important;
+}
+
+.main-panel .stTextInput input {
+    background:#ffffff !important;
+    border:1px solid #e2e8f0 !important;
+    border-radius:14px !important;
+    color: var(--text-color) !important;
+}
+
+.main-panel .stTextInput input::placeholder {
+    color:#94a3b8 !important;
+}
+
+.main-panel .stButton button,
+.main-panel .stFormSubmitButton button {
+    background: rgba(255,255,255,0.84) !important;
+    border: 1px solid #d9e3ee !important;
+    color: var(--text-color) !important;
+    border-radius: 14px !important;
+}
+
+.main-panel .stButton button:hover,
+.main-panel .stFormSubmitButton button:hover {
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+}
+
 /* Mobile responsiveness */
 @media (max-width:768px) {
     .hero-title { font-size:28px !important; margin-bottom:25px !important; }
@@ -114,79 +144,89 @@ footer {visibility:hidden;}
 /* Markdown text color fix */
 .stMarkdown p, .stMarkdown span, .stMarkdown div, .stMarkdown strong { color: var(--text-color) !important; }
 /* ---------- Dark Mode Overrides ---------- */
-html[data-theme='dark'] {
+html[data-theme='dark'],
+body[data-theme='dark'],
+[data-theme='dark'] {
     --background-color: #0c0e12 !important;
     --secondary-background-color: #171a21 !important;
     --text-color: #fafafa !important;
     --primary-color: #00a67e !important;
 }
 /* Dark page background */
-html[data-theme='dark'] [data-testid="stAppViewContainer"] {
+[data-theme='dark'] [data-testid="stAppViewContainer"] {
     background: radial-gradient(circle at 50% 50%, #1c202a 0%, #0c0e12 100%) !important;
     color: var(--text-color) !important;
 }
 /* Dark sidebar */
-html[data-theme='dark'] [data-testid="stSidebar"] {
+[data-theme='dark'] [data-testid="stSidebar"] {
     background-color: #12151c !important;
     border-right: 1px solid #1c1e24 !important;
 }
 /* Dark cards */
-html[data-theme='dark'] .card {
+[data-theme='dark'] .card {
     background: rgba(23,26,33,0.7) !important;
     border: 1px solid #282d3b !important;
     color: #ffffff !important;
 }
-html[data-theme='dark'] .card-title,
-html[data-theme='dark'] .card-desc {
+[data-theme='dark'] .card-title,
+[data-theme='dark'] .card-desc {
     color: #ffffff !important;
 }
 /* Dark response box */
-html[data-theme='dark'] .response-box {
+[data-theme='dark'] .response-box {
     background: rgba(23,26,33,0.8) !important;
     border: 1px solid #282d3b !important;
     color: #fafafa !important;
 }
 /* Dark hero title */
-html[data-theme='dark'] .hero-title {
+[data-theme='dark'] .hero-title {
     color: #ffffff !important;
 }
 /* Dark input fields */
-html[data-theme='dark'] [data-testid="stSidebar"] .stTextInput input,
-html[data-theme='dark'] .chat-input-container .stTextInput input {
+[data-theme='dark'] [data-testid="stSidebar"] .stTextInput input,
+[data-theme='dark'] .chat-input-container .stTextInput input {
     background: #171a21 !important;
     border: 1px solid #282d3b !important;
     color: #fafafa !important;
 }
 /* Dark buttons */
-html[data-theme='dark'] .chat-input-container .stFormSubmitButton button {
+[data-theme='dark'] .chat-input-container .stFormSubmitButton button {
     background: #171a21 !important;
     border: 1px solid #282d3b !important;
     color: #fafafa !important;
 }
 /* Dark button hover */
-html[data-theme='dark'] .chat-input-container .stFormSubmitButton button:hover {
+[data-theme='dark'] .chat-input-container .stFormSubmitButton button:hover {
     background: #1c202a !important;
     border-color: var(--primary-color) !important;
     color: var(--primary-color) !important;
 }
+
+[data-theme='dark'] .main-panel [data-testid="stFileUploader"] {
+    background: rgba(23,26,33,0.82) !important;
+    border-color: #282d3b !important;
+}
+
+[data-theme='dark'] .main-panel .stButton button,
+[data-theme='dark'] .main-panel .stFormSubmitButton button {
+    background: #171a21 !important;
+    border-color: #282d3b !important;
+    color: #fafafa !important;
+}
+
+[data-theme='dark'] .main-panel .stTextInput input {
+    background: #171a21 !important;
+    border-color: #282d3b !important;
+    color: #fafafa !important;
+}
+
+[data-theme='dark'] .main-panel .stTextInput input::placeholder {
+    color: #94a3b8 !important;
+}
 /* Ensure sidebar button text stays readable */
-html[data-theme='dark'] [data-testid="stSidebar"] button {
+[data-theme='dark'] [data-testid="stSidebar"] button {
     color: #cbd5e1 !important;
 }
 /* End of Dark Mode Overrides */
-/* Force Light Mode even if dark selected */
-html[data-theme='dark'] {
-    --background-color: #ffffff !important;
-    --secondary-background-color: #f4f8fc !important;
-    --text-color: #1a1a1a !important;
-    --primary-color: #00a67e !important;
-    background: #ffffff !important;
-    color: #1a1a1a !important;
-}
-[data-testid="stAppViewContainer"] {
-    background: radial-gradient(circle at 50% 50%, #f4faff 0%, #e1f0fb 30%, #fbeff8 70%, #dbefff 100%) !important;
-}
-[data-testid="stSidebar"] {
-    background-color: #f4f8fc !important;
-}
+
 
