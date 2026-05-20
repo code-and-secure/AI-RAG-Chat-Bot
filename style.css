@@ -113,6 +113,67 @@ footer {visibility:hidden;}
 
 /* Markdown text color fix */
 .stMarkdown p, .stMarkdown span, .stMarkdown div, .stMarkdown strong { color: var(--text-color) !important; }
+/* ---------- Dark Mode Overrides ---------- */
+html[data-theme='dark'] {
+    --background-color: #0c0e12 !important;
+    --secondary-background-color: #171a21 !important;
+    --text-color: #fafafa !important;
+    --primary-color: #00a67e !important;
+}
+/* Dark page background */
+html[data-theme='dark'] [data-testid="stAppViewContainer"] {
+    background: radial-gradient(circle at 50% 50%, #1c202a 0%, #0c0e12 100%) !important;
+    color: var(--text-color) !important;
+}
+/* Dark sidebar */
+html[data-theme='dark'] [data-testid="stSidebar"] {
+    background-color: #12151c !important;
+    border-right: 1px solid #1c1e24 !important;
+}
+/* Dark cards */
+html[data-theme='dark'] .card {
+    background: rgba(23,26,33,0.7) !important;
+    border: 1px solid #282d3b !important;
+    color: #ffffff !important;
+}
+html[data-theme='dark'] .card-title,
+html[data-theme='dark'] .card-desc {
+    color: #ffffff !important;
+}
+/* Dark response box */
+html[data-theme='dark'] .response-box {
+    background: rgba(23,26,33,0.8) !important;
+    border: 1px solid #282d3b !important;
+    color: #fafafa !important;
+}
+/* Dark hero title */
+html[data-theme='dark'] .hero-title {
+    color: #ffffff !important;
+}
+/* Dark input fields */
+html[data-theme='dark'] [data-testid="stSidebar"] .stTextInput input,
+html[data-theme='dark'] .chat-input-container .stTextInput input {
+    background: #171a21 !important;
+    border: 1px solid #282d3b !important;
+    color: #fafafa !important;
+}
+/* Dark buttons */
+html[data-theme='dark'] .chat-input-container .stFormSubmitButton button {
+    background: #171a21 !important;
+    border: 1px solid #282d3b !important;
+    color: #fafafa !important;
+}
+/* Dark button hover */
+html[data-theme='dark'] .chat-input-container .stFormSubmitButton button:hover {
+    background: #1c202a !important;
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+}
+/* Ensure sidebar button text stays readable */
+html[data-theme='dark'] [data-testid="stSidebar"] button {
+    color: #cbd5e1 !important;
+}
+/* End of Dark Mode Overrides */
 /* Force Light Mode even if dark selected */
 html[data-theme='dark'] {
     --background-color: #ffffff !important;
