@@ -186,3 +186,51 @@
 /* Hide streamlit headers/footers */
 header {visibility: hidden;}
 footer {visibility: hidden;}
+
+/* =========================
+   CARDS & GRIDS
+   ========================= */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    padding: 24px !important;
+    text-align: center !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02) !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+}
+
+.card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06) !important;
+    border-color: #cbd5e0 !important;
+}
+
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 10px;
+}
+
+.card-desc {
+    font-size: 14px;
+    color: #718096;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
