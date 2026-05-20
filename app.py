@@ -13,7 +13,7 @@ from search import google_search_context
 load_dotenv()
 
 st.set_page_config(
-    page_title="NameBot",
+    page_title="DocuMind",
     page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -93,17 +93,19 @@ else:
 # =========================
 # CHAT INPUT
 # =========================
+st.markdown("<div class='chat-input-container'>", unsafe_allow_html=True)
 with st.form(key="search_form", clear_on_submit=False):
-    query_col1, query_col2 = st.columns([5, 1])
+    query_col1, query_col2 = st.columns([6, 1])
     with query_col1:
         query = st.text_input(
-            "New chat in NameBot",
+            "New chat in DocuMind",
             key="query_input",
-            placeholder="New chat in NameBot 📎",
+            placeholder="New chat in DocuMind 📎",
             label_visibility="collapsed"
         )
     with query_col2:
         search_clicked = st.form_submit_button("Send", use_container_width=True)
+st.markdown("</div>", unsafe_allow_html=True)
 
 # =========================
 # PROCESS QUERY
