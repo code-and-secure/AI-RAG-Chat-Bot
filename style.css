@@ -1,3 +1,20 @@
+/* ==================================================
+   FORCE STRICT LIGHT THEME VARIABLES (DISABLES DARK MODE)
+   ================================================== */
+:root, 
+.stApp, 
+[data-testid="stAppViewContainer"], 
+[data-testid="stSidebar"],
+[data-testid="stForm"],
+.stTextInput,
+.stButton,
+.stFileUploader {
+    --background-color: #ffffff !important;
+    --secondary-background-color: #f4f8fc !important;
+    --text-color: #1a1a1a !important;
+    --primary-color: #00a67e !important;
+}
+
 /* Custom Strictly Locked Light Theme CSS */
 
 [data-testid="stAppViewContainer"] {
