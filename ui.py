@@ -18,7 +18,7 @@ def render_sidebar():
         st.markdown("""
         <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px;">
             <div style="font-size:24px; color: #00a67e;">✨</div>
-            <h3 style="margin:0; font-weight:600; color: #1a1a1a;">DocuMind</h3>
+            <h3 style="margin:0; font-weight:600; color: #ffffff;">DocuMind</h3>
         </div>
         """, unsafe_allow_html=True)
         
@@ -30,17 +30,17 @@ def render_sidebar():
 
         st.markdown("<div style='margin-top: 15px;'></div>", unsafe_allow_html=True)
 
-        # Render active navigation styling (strictly light theme active highlight)
+        # Render active navigation styling strictly for Dark Mode
         active_page = st.session_state.current_page
         active_css = ""
         if active_page == "Chat":
-            active_css = "div[data-testid='stSidebar'] button[key='nav_chat'] { background-color: #ffffff !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important; }"
+            active_css = "div[data-testid='stSidebar'] button[key='nav_chat'] { background-color: #1c202a !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important; color: #ffffff !important; }"
         elif active_page == "My bots":
-            active_css = "div[data-testid='stSidebar'] button[key='nav_my_bots'] { background-color: #ffffff !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important; }"
+            active_css = "div[data-testid='stSidebar'] button[key='nav_my_bots'] { background-color: #1c202a !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important; color: #ffffff !important; }"
         elif active_page == "Public bots":
-            active_css = "div[data-testid='stSidebar'] button[key='nav_public_bots'] { background-color: #ffffff !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important; }"
+            active_css = "div[data-testid='stSidebar'] button[key='nav_public_bots'] { background-color: #1c202a !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important; color: #ffffff !important; }"
         elif active_page == "Integrations":
-            active_css = "div[data-testid='stSidebar'] button[key='nav_integrations'] { background-color: #ffffff !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important; }"
+            active_css = "div[data-testid='stSidebar'] button[key='nav_integrations'] { background-color: #1c202a !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important; color: #ffffff !important; }"
             
         st.markdown(f"<style>{active_css}</style>", unsafe_allow_html=True)
 
