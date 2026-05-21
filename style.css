@@ -57,7 +57,6 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"] {
     transition: all 0.22s ease !important; 
 }
 [data-testid="stSidebar"] button:hover { 
-    background: var(--secondary-background-color) !important; 
     opacity: 1; border-color: var(--panel-border) !important;
 }
 
@@ -183,14 +182,19 @@ div[data-testid="InputInstructions"] {
 /* Form Buttons */
 div[data-testid="stForm"] .stFormSubmitButton button, .stButton button, .stFormSubmitButton button { 
     background: var(--primary-color, #0066ff) !important; color: #ffffff !important; 
+    opacity: 0.75 !important;
     height: 56px !important; border-radius: 20px !important; font-weight: 700 !important; 
     border: none !important; box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2) !important; 
-    transition: transform 0.15s ease, box-shadow 0.15s ease !important; width: 100%; margin: 0 !important; padding: 0 !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease !important; width: 100%; margin: 0 !important; padding: 0 !important;
     display: flex !important; align-items: center !important; justify-content: center !important;
     letter-spacing: 0.02em;
 }
-div[data-testid="stForm"] .stFormSubmitButton button:hover, .stButton button:hover { 
+div[data-testid="stForm"] .stFormSubmitButton button:hover, .stButton button:hover, .stFormSubmitButton button:hover { 
     transform: translateY(-2px); 
+    background: var(--primary-color, #0066ff) !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+    border: none !important;
     box-shadow: 0 8px 24px rgba(0, 102, 255, 0.3) !important; 
 }
 div[data-testid="stForm"] .stFormSubmitButton {
