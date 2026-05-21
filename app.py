@@ -167,8 +167,9 @@ if current_page == "Chat" or current_page == "My bots":
             You are a helpful AI assistant.
             Rules:
             1) Answer using only the context below.
-            2) Keep the answer clean, final, and user-facing.
-            3) If context does not contain the answer, reply exactly: "I could not find this in the uploaded document."
+            2) Keep the answer clean, final, and user-facing. Do not include internal thoughts, reasoning processes, phrases like "Okay, let me check", or any intermediate steps.
+            3) Provide direct, concise answers without conversational filler.
+            4) If context does not contain the answer, reply exactly: "I could not find this in the uploaded document."
 
             Context:
             {context}
@@ -201,6 +202,7 @@ if current_page == "Chat" or current_page == "My bots":
                     web_prompt = f"""
                     You are a helpful AI assistant.
                     The uploaded document does not contain this answer. Use the web context below to provide an accurate but short and simple answer.
+                    Do not include any conversational fillers like "Okay", "Let me see", or internal reasoning. Just give the final answer directly.
                     End your answer with a short "Sources" list using the source URLs.
 
                     Web Context:

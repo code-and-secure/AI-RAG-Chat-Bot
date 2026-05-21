@@ -56,6 +56,30 @@ def google_search_context(user_query: str, num_results: int = 3):
                     if page_text:
                         context_parts.append(f"Source: {url}\nContent: {page_text}")
         except Exception:
+            pass
+
+    # Secondary API Fallback (Wikipedia) if scraping fails completely
+    if not context_parts:
+        try:
+            headers = {"User-Agent": "DocuMind-AI-Bot/1.0 (test@example.com)"}
+            wiki_search = requests.get(
+                f"https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch={user_query}&utf8=&format=json",
+                headers=headers,
+                timeout=5
+            ).json()
+            if "query" in wiki_search and wiki_search["query"]["search"]:
+                for item in wiki_search["query"]["search"][:num_results]:
+                    page_id = item["pageid"]
+                    wiki_page = requests.get(
+                        f"https://en.wikipedia.org/w/api.php?action=query&prop=extracts&pageids={page_id}&explaintext=true&format=json",
+                        headers=headers,
+                        timeout=5
+                    ).json()
+                    extract = wiki_page["query"]["pages"][str(page_id)]["extract"]
+                    url = f"https://en.wikipedia.org/wiki/?curid={page_id}"
+                    urls.append(url)
+                    context_parts.append(f"Source: {url}\nContent: {extract[:2000]}")
+        except Exception:
             return "", []
 
     return "\n\n".join(context_parts), urls
