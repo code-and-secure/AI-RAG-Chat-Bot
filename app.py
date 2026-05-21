@@ -79,9 +79,9 @@ def load_mock_bot_data(bot_name, mock_texts, source_name):
         st.rerun()
 
 # ==================================================
-# CHAT / MY BOTS PAGE
+# CHAT PAGE
 # ==================================================
-if current_page == "Chat" or current_page == "My bots":
+if current_page == "Chat":
     render_hero("Empower Your Future with <span>DocuMind</span> Solutions")
 
     # 1. FILE UPLOADER
@@ -230,6 +230,36 @@ if current_page == "Chat" or current_page == "My bots":
         for chat in reversed(st.session_state.chat_history):
             st.markdown(f"**You:** {chat['question']}")
             st.markdown(f"<div class='response-box'>{chat['answer']}</div>", unsafe_allow_html=True)
+
+# ==================================================
+# MY BOTS PAGE
+# ==================================================
+elif current_page == "My bots":
+    render_hero("Your Personal <span>Bots</span> Library")
+    
+    st.markdown("### Manage Your AI Assistants")
+    st.markdown("Here you can access the bots you've customized or files you've uploaded. (Currently displaying local session active bot).")
+
+    if st.session_state.file_uploaded:
+        st.success(f"✅ Active Bot: **{st.session_state.uploaded_file_name}**")
+        st.markdown(f"**Chunks Indexed:** {len(st.session_state.docs)}")
+        
+        if st.button("💬 Chat with this Bot", use_container_width=True):
+            st.session_state.current_page = "Chat"
+            st.rerun()
+    else:
+        st.info("No active custom bot found in this session. Head to the **Chat** page to upload a document and create one!")
+
+    st.markdown("<hr>", unsafe_allow_html=True)
+    st.markdown("#### Bot Statistics (Mock Data)")
+    
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric(label="Total Custom Bots", value="3")
+    with col2:
+        st.metric(label="Total Queries Answered", value="249")
+    with col3:
+        st.metric(label="Total Documents Indexed", value="18")
 
 # ==================================================
 # PUBLIC BOTS PAGE
