@@ -80,57 +80,58 @@ st.markdown("""
 <style>
 .documind-bot {
     position: fixed;
-    width: 65px;
-    height: 65px;
-    background: linear-gradient(135deg, var(--primary-color, #2980b9), #2c3e50);
-    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 32px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    font-size: 60px;
     z-index: 99999;
-    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+    user-select: none;
+    pointer-events: none;
 }
 
 .bot-idle {
-    bottom: 40px;
-    right: 40px;
-    animation: floatWander 8s infinite alternate ease-in-out;
+    bottom: 50px;
+    right: 50px;
+    animation: floatWander 6s infinite alternate ease-in-out;
 }
 
 .bot-processing {
     bottom: 50%;
     right: 50%;
     transform: translate(50%, 50%);
-    animation: pulseProcess 0.8s infinite alternate ease-in-out;
-    width: 100px;
-    height: 100px;
-    font-size: 50px;
+    animation: deepThinking 1.5s infinite ease-in-out;
+    font-size: 85px;
+    filter: drop-shadow(0 0 30px rgba(52, 152, 219, 0.8));
 }
 
 .bot-aside {
-    bottom: 30px;
-    right: -20px;
-    opacity: 0.7;
-    animation: peek 4s infinite alternate ease-in-out;
+    bottom: 25px;
+    right: 30px;
+    opacity: 0.9;
+    animation: floatAside 4s infinite alternate ease-in-out;
+    font-size: 50px;
 }
 
 @keyframes floatWander {
-    0% { transform: translateY(0) translateX(0) scale(1); }
-    33% { transform: translateY(-40px) translateX(-30px) scale(1.05) rotate(-10deg); }
-    66% { transform: translateY(-15px) translateX(-60px) scale(0.95) rotate(10deg); }
-    100% { transform: translateY(-50px) translateX(-10px) scale(1.02) rotate(-5deg); }
+    0% { transform: translateY(0) translateX(0) rotate(0deg); }
+    33% { transform: translateY(-30px) translateX(-40px) rotate(-10deg); }
+    66% { transform: translateY(-10px) translateX(-20px) rotate(10deg); }
+    100% { transform: translateY(-40px) translateX(-10px) rotate(-5deg); }
 }
 
-@keyframes pulseProcess {
-    0% { transform: translate(50%, 50%) scale(1); box-shadow: 0 0 0 0 rgba(41, 128, 185, 0.7); }
-    100% { transform: translate(50%, 50%) scale(1.15) rotate(15deg); box-shadow: 0 0 25px 15px rgba(41, 128, 185, 0); }
+@keyframes deepThinking {
+    0% { transform: translate(50%, 50%) scale(1) rotate(0deg); }
+    25% { transform: translate(50%, 50%) scale(1.1) rotate(-15deg); }
+    50% { transform: translate(50%, 50%) scale(1.2) rotate(15deg); }
+    75% { transform: translate(50%, 50%) scale(1.1) rotate(-10deg); }
+    100% { transform: translate(50%, 50%) scale(1) rotate(0deg); }
 }
 
-@keyframes peek {
-    0% { transform: translateX(0) rotate(-15deg); }
-    100% { transform: translateX(-15px) rotate(-25deg); }
+@keyframes floatAside {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-12px) rotate(8deg); }
 }
 </style>
 """, unsafe_allow_html=True)
