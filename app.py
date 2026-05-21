@@ -80,7 +80,7 @@ def load_mock_bot_data(bot_name, mock_texts, source_name):
 # CHAT / MY BOTS PAGE
 # ==================================================
 if current_page == "Chat" or current_page == "My bots":
-    render_hero("Hello, how can I help today?")
+    render_hero("Empower Your Future with <span>DocuMind</span> Solutions")
 
     # 1. FILE UPLOADER
     if not st.session_state.file_uploaded:
