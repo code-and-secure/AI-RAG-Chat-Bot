@@ -33,7 +33,7 @@ def render_sidebar():
         </div>
         """, unsafe_allow_html=True)
         
-        st.text_input("Search in chats", label_visibility="collapsed", placeholder="🔍 Search in chats")
+        search_query = st.text_input("Search in chats", label_visibility="collapsed", placeholder="🔍 Search in chats").lower()
         
         # Initialize page state if not exists
         if "current_page" not in st.session_state:
@@ -57,21 +57,25 @@ def render_sidebar():
         st.markdown(f"<style>{active_css}</style>", unsafe_allow_html=True)
 
         # Interactive sidebar buttons
-        if st.button("💬 Chat", key="nav_chat", use_container_width=True):
-            st.session_state.current_page = "Chat"
-            st.rerun()
+        if not search_query or search_query in "chat":
+            if st.button("💬 Chat", key="nav_chat", use_container_width=True):
+                st.session_state.current_page = "Chat"
+                st.rerun()
 
-        if st.button("📁 My bots", key="nav_my_bots", use_container_width=True):
-            st.session_state.current_page = "My bots"
-            st.rerun()
+        if not search_query or search_query in "my bots":
+            if st.button("📁 My bots", key="nav_my_bots", use_container_width=True):
+                st.session_state.current_page = "My bots"
+                st.rerun()
 
-        if st.button("👥 Public bots", key="nav_public_bots", use_container_width=True):
-            st.session_state.current_page = "Public bots"
-            st.rerun()
+        if not search_query or search_query in "public bots":
+            if st.button("👥 Public bots", key="nav_public_bots", use_container_width=True):
+                st.session_state.current_page = "Public bots"
+                st.rerun()
 
-        if st.button("🔌 Integrations (Beta)", key="nav_integrations", use_container_width=True):
-            st.session_state.current_page = "Integrations"
-            st.rerun()
+        if not search_query or search_query in "integrations (beta)":
+            if st.button("🔌 Integrations (Beta)", key="nav_integrations", use_container_width=True):
+                st.session_state.current_page = "Integrations"
+                st.rerun()
 
 def render_hero(title="Hello, how can I help today?"):
     avatar_b64 = get_base64_image("assets/avatar.png")
