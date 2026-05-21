@@ -165,17 +165,23 @@ div[data-testid="stTextInputRootElement"] input {
     line-height: 56px !important; margin: 0 !important;
 }
 
+/* Hide the "Press Enter to submit form" text that appears below the input */
+div[data-testid="InputInstructions"] {
+    display: none !important;
+}
+
 /* Form Buttons */
 div[data-testid="stForm"] .stFormSubmitButton button, .stButton button, .stFormSubmitButton button { 
-    background: var(--text-color) !important; color: var(--background-color) !important; 
+    background: var(--primary-color, #0066ff) !important; color: #ffffff !important; 
     height: 56px !important; border-radius: 20px !important; font-weight: 700 !important; 
-    border: none !important; box-shadow: var(--shadow) !important; 
-    transition: transform 0.15s ease !important; width: 100%; margin: 0 !important; padding: 0 !important;
+    border: none !important; box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2) !important; 
+    transition: transform 0.15s ease, box-shadow 0.15s ease !important; width: 100%; margin: 0 !important; padding: 0 !important;
     display: flex !important; align-items: center !important; justify-content: center !important;
+    letter-spacing: 0.02em;
 }
 div[data-testid="stForm"] .stFormSubmitButton button:hover, .stButton button:hover { 
     transform: translateY(-2px); 
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important; 
+    box-shadow: 0 8px 24px rgba(0, 102, 255, 0.3) !important; 
 }
 div[data-testid="stForm"] .stFormSubmitButton {
     height: 56px !important; display: flex !important; align-items: center !important; justify-content: center !important;
