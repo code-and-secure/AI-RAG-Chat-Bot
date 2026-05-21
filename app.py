@@ -64,12 +64,84 @@ if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 if "show_fallback_popup" not in st.session_state:
     st.session_state.show_fallback_popup = False
+if "bot_state" not in st.session_state:
+    st.session_state.bot_state = "idle"
 
 # Load custom CSS
 load_css()
 
 # Render UI Sidebar Navigation
 render_sidebar()
+
+# ==================================================
+# WANDERING BOT SETUP
+# ==================================================
+st.markdown("""
+<style>
+.documind-bot {
+    position: fixed;
+    width: 65px;
+    height: 65px;
+    background: linear-gradient(135deg, var(--primary-color, #2980b9), #2c3e50);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    z-index: 99999;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.bot-idle {
+    bottom: 40px;
+    right: 40px;
+    animation: floatWander 8s infinite alternate ease-in-out;
+}
+
+.bot-processing {
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+    animation: pulseProcess 0.8s infinite alternate ease-in-out;
+    width: 100px;
+    height: 100px;
+    font-size: 50px;
+}
+
+.bot-aside {
+    bottom: 30px;
+    right: -20px;
+    opacity: 0.7;
+    animation: peek 4s infinite alternate ease-in-out;
+}
+
+@keyframes floatWander {
+    0% { transform: translateY(0) translateX(0) scale(1); }
+    33% { transform: translateY(-40px) translateX(-30px) scale(1.05) rotate(-10deg); }
+    66% { transform: translateY(-15px) translateX(-60px) scale(0.95) rotate(10deg); }
+    100% { transform: translateY(-50px) translateX(-10px) scale(1.02) rotate(-5deg); }
+}
+
+@keyframes pulseProcess {
+    0% { transform: translate(50%, 50%) scale(1); box-shadow: 0 0 0 0 rgba(41, 128, 185, 0.7); }
+    100% { transform: translate(50%, 50%) scale(1.15) rotate(15deg); box-shadow: 0 0 25px 15px rgba(41, 128, 185, 0); }
+}
+
+@keyframes peek {
+    0% { transform: translateX(0) rotate(-15deg); }
+    100% { transform: translateX(-15px) rotate(-25deg); }
+}
+</style>
+""", unsafe_allow_html=True)
+
+bot_container = st.empty()
+def render_bot(state):
+    st.session_state.bot_state = state
+    bot_container.markdown(f'<div class="documind-bot bot-{state}">🤖</div>', unsafe_allow_html=True)
+
+# Initial render
+render_bot(st.session_state.bot_state)
 
 # Page Routing Configuration
 current_page = st.session_state.current_page
@@ -116,6 +188,10 @@ if current_page == "Chat":
                 st.stop()
 
             uploaded_file = uploaded_files[0]
+            
+            # Animate bot processing
+            render_bot("processing")
+            
             with st.spinner("⚙️ Analyzing document, chunking text, & building vector index... Please wait."):
                 docs, db, retriever = process_document(uploaded_file)
                 st.session_state.docs = docs
@@ -126,6 +202,7 @@ if current_page == "Chat":
                 st.session_state.submitted_query = ""
                 st.session_state.last_response = ""
                 st.session_state.chat_history = []
+                st.session_state.bot_state = "aside"
                 update_stat("total_bots", 1)
                 update_stat("total_docs", 1)
                 st.rerun()
@@ -155,6 +232,7 @@ if current_page == "Chat":
                 st.session_state.submitted_query = ""
                 st.session_state.last_response = ""
                 st.session_state.chat_history = []
+                st.session_state.bot_state = "idle"
                 st.rerun()
 
     st.markdown("<div style='margin-top: 20px;'></div>", unsafe_allow_html=True)
@@ -175,6 +253,10 @@ if current_page == "Chat":
     # 3. QUERY PROCESSING
     if query and search_clicked:
         st.session_state.submitted_query = query
+        
+        # Animate bot processing
+        render_bot("processing")
+        
         with st.spinner("AI is thinking..."):
             normalized_query = query.strip().lower()
 
@@ -249,6 +331,7 @@ if current_page == "Chat":
 
             st.session_state.last_response = final_answer
             st.session_state.chat_history.append({"question": query, "answer": final_answer})
+            st.session_state.bot_state = "aside" if st.session_state.file_uploaded else "idle"
             update_stat("total_queries", 1)
             st.rerun()
 
