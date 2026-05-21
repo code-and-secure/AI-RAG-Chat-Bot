@@ -44,6 +44,8 @@ if "last_response" not in st.session_state:
     st.session_state.last_response = ""
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
+if "show_fallback_popup" not in st.session_state:
+    st.session_state.show_fallback_popup = False
 
 # Load custom CSS
 load_css()
@@ -187,17 +189,18 @@ if current_page == "Chat" or current_page == "My bots":
             if not should_fallback_to_web:
                 response = llm.invoke(prompt)
                 final_answer = response.content
-                if "I could not find this in the uploaded document." in response.content and best_score < 0.18:
+                if "I could not find this in the uploaded document." in response.content:
                     should_fallback_to_web = True
                 else:
                     should_fallback_to_web = False
 
             if should_fallback_to_web:
+                st.session_state.show_fallback_popup = True
                 web_context, source_urls = google_search_context(query, num_results=3)
                 if web_context:
                     web_prompt = f"""
                     You are a helpful AI assistant.
-                    The uploaded document does not contain this answer. Use the web context below.
+                    The uploaded document does not contain this answer. Use the web context below to provide an accurate but short and simple answer.
                     End your answer with a short "Sources" list using the source URLs.
 
                     Web Context:
@@ -207,7 +210,7 @@ if current_page == "Chat" or current_page == "My bots":
                     {query}
                     """
                     web_response = llm.invoke(web_prompt)
-                    final_answer = f"Searching web...\n\n{web_response.content}"
+                    final_answer = f"{web_response.content}"
                 else:
                     final_answer = "Could not fetch results from Google."
 
@@ -216,6 +219,10 @@ if current_page == "Chat" or current_page == "My bots":
             st.rerun()
 
     # 4. CHAT HISTORY RENDER
+    if st.session_state.show_fallback_popup:
+        st.toast("Answer does not exist in the loaded document. Provided answer from Google.", icon="⚠️")
+        st.session_state.show_fallback_popup = False
+
     if st.session_state.chat_history:
         st.markdown("---")
         for chat in reversed(st.session_state.chat_history):
