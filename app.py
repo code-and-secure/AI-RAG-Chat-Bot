@@ -1,4 +1,5 @@
 import os
+import json
 import streamlit as st
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
@@ -15,6 +16,23 @@ from search import google_search_context, fetch_page_text
 # LOAD ENV & CONFIG
 # =========================
 load_dotenv()
+
+STATS_FILE = "stats.json"
+
+def load_stats():
+    if os.path.exists(STATS_FILE):
+        try:
+            with open(STATS_FILE, "r") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {"total_queries": 0, "total_docs": 0, "total_bots": 0}
+
+def update_stat(key, increment=1):
+    stats = load_stats()
+    stats[key] = stats.get(key, 0) + increment
+    with open(STATS_FILE, "w") as f:
+        json.dump(stats, f)
 
 st.set_page_config(
     page_title="DocuMind",
@@ -108,6 +126,8 @@ if current_page == "Chat":
                 st.session_state.submitted_query = ""
                 st.session_state.last_response = ""
                 st.session_state.chat_history = []
+                update_stat("total_bots", 1)
+                update_stat("total_docs", 1)
                 st.rerun()
     else:
         # File info display
@@ -218,6 +238,7 @@ if current_page == "Chat":
 
             st.session_state.last_response = final_answer
             st.session_state.chat_history.append({"question": query, "answer": final_answer})
+            update_stat("total_queries", 1)
             st.rerun()
 
     # 4. CHAT HISTORY RENDER
@@ -251,15 +272,16 @@ elif current_page == "My bots":
         st.info("No active custom bot found in this session. Head to the **Chat** page to upload a document and create one!")
 
     st.markdown("<hr>", unsafe_allow_html=True)
-    st.markdown("#### Bot Statistics (Mock Data)")
+    st.markdown("#### Bot Statistics")
     
+    stats = load_stats()
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.metric(label="Total Custom Bots", value="3")
+        st.metric(label="Total Custom Bots", value=f"{stats['total_bots']}")
     with col2:
-        st.metric(label="Total Queries Answered", value="249")
+        st.metric(label="Total Queries Answered", value=f"{stats['total_queries']}")
     with col3:
-        st.metric(label="Total Documents Indexed", value="18")
+        st.metric(label="Total Documents Indexed", value=f"{stats['total_docs']}")
 
 # ==================================================
 # PUBLIC BOTS PAGE
