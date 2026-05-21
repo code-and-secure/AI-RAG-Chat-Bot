@@ -116,7 +116,7 @@ if current_page == "Chat":
                 st.stop()
 
             uploaded_file = uploaded_files[0]
-            with st.spinner("Processing document..."):
+            with st.spinner("⚙️ Analyzing document, chunking text, & building vector index... Please wait."):
                 docs, db, retriever = process_document(uploaded_file)
                 st.session_state.docs = docs
                 st.session_state.vector_db = db
@@ -130,12 +130,23 @@ if current_page == "Chat":
                 update_stat("total_docs", 1)
                 st.rerun()
     else:
-        # File info display
-        col1, col2 = st.columns([5, 1])
-        with col1:
-            st.markdown(f"📁 **Loaded Source:** `{st.session_state.uploaded_file_name}` ({len(st.session_state.docs)} chunks)")
-        with col2:
-            if st.button("Reset / Upload New", key="upload_new_btn", use_container_width=True):
+        # Beautiful File info display widget
+        st.markdown(f"""
+        <div style="background-color: var(--secondary-background-color); padding: 15px 20px; border-radius: 10px; border-left: 5px solid var(--primary-color); display: flex; align-items: center; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div style="font-size: 2.2rem; margin-right: 15px;">📄</div>
+            <div style="flex-grow: 1;">
+                <div style="font-weight: 700; font-size: 1.15rem;">{st.session_state.uploaded_file_name}</div>
+                <div style="font-size: 0.9rem; margin-top: 2px; color: #7f8c8d;">Securely indexed • <b>{len(st.session_state.docs)}</b> semantic chunks ready for queries</div>
+            </div>
+            <div style="background-color: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 0.85rem; letter-spacing: 0.5px;">
+                🟢 ACTIVE
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        col1, col2, col3 = st.columns([5, 1, 1])
+        with col3:
+            if st.button("Close Document", key="upload_new_btn", use_container_width=True):
                 st.session_state.file_uploaded = False
                 st.session_state.docs = []
                 st.session_state.retriever = None
