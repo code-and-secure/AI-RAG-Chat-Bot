@@ -275,13 +275,26 @@ elif current_page == "My bots":
     st.markdown("#### Bot Statistics")
     
     stats = load_stats()
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.metric(label="Total Custom Bots", value=f"{stats['total_bots']}")
-    with col2:
-        st.metric(label="Total Queries Answered", value=f"{stats['total_queries']}")
-    with col3:
-        st.metric(label="Total Documents Indexed", value=f"{stats['total_docs']}")
+    
+    st.markdown(f"""
+    <div style="display: flex; gap: 20px; text-align: center; margin-top: 15px;">
+        <div class="card" style="flex: 1; padding: 25px 15px;">
+            <div style="font-size: 2.5rem; margin-bottom: 15px;">🤖</div>
+            <div style="font-size: 1.1rem; color: #666; margin-bottom: 10px; font-weight: 500;">Total Custom Bots</div>
+            <div style="font-size: 3rem; font-weight: 800; color: var(--primary-color);">{stats['total_bots']}</div>
+        </div>
+        <div class="card" style="flex: 1; padding: 25px 15px;">
+            <div style="font-size: 2.5rem; margin-bottom: 15px;">💬</div>
+            <div style="font-size: 1.1rem; color: #666; margin-bottom: 10px; font-weight: 500;">Total Queries Answered</div>
+            <div style="font-size: 3rem; font-weight: 800; color: var(--primary-color);">{stats['total_queries']}</div>
+        </div>
+        <div class="card" style="flex: 1; padding: 25px 15px;">
+            <div style="font-size: 2.5rem; margin-bottom: 15px;">📄</div>
+            <div style="font-size: 1.1rem; color: #666; margin-bottom: 10px; font-weight: 500;">Total Documents Indexed</div>
+            <div style="font-size: 3rem; font-weight: 800; color: var(--primary-color);">{stats['total_docs']}</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ==================================================
 # PUBLIC BOTS PAGE
