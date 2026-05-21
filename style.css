@@ -134,6 +134,78 @@ body,
     visibility: visible !important;
 }
 
+[data-testid="stBaseButton-headerNoPadding"],
+[data-testid="stHeader"] button[data-testid="stBaseButton-headerNoPadding"] {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 14px !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    background: rgba(12, 15, 20, 0.94) !important;
+    color: var(--text) !important;
+    opacity: 1 !important;
+    filter: none !important;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.3) !important;
+}
+
+[data-testid="stBaseButton-headerNoPadding"] > span {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 14px !important;
+    background: rgba(12, 15, 20, 0.94) !important;
+    color: var(--text) !important;
+    opacity: 1 !important;
+}
+
+[data-testid="stBaseButton-headerNoPadding"] [data-testid="stIconMaterial"] {
+    color: var(--text) !important;
+    opacity: 1 !important;
+    font-size: 1.35rem !important;
+    line-height: 1 !important;
+}
+
+[data-testid="stBaseButton-headerNoPadding"]:hover,
+[data-testid="stBaseButton-headerNoPadding"]:active,
+[data-testid="stBaseButton-headerNoPadding"]:focus,
+[data-testid="stBaseButton-headerNoPadding"]:focus-visible,
+[data-testid="stHeader"] button[data-testid="stBaseButton-headerNoPadding"]:hover,
+[data-testid="stHeader"] button[data-testid="stBaseButton-headerNoPadding"]:active,
+[data-testid="stHeader"] button[data-testid="stBaseButton-headerNoPadding"]:focus,
+[data-testid="stHeader"] button[data-testid="stBaseButton-headerNoPadding"]:focus-visible {
+    background: rgba(20, 25, 33, 0.98) !important;
+    border-color: rgba(255,255,255,0.14) !important;
+    color: var(--text) !important;
+    opacity: 1 !important;
+    filter: none !important;
+    outline: none !important;
+}
+
+[data-testid="collapsedControl"] button {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 14px !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    background: rgba(12, 15, 20, 0.94) !important;
+    color: var(--text) !important;
+    opacity: 1 !important;
+    filter: none !important;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.3) !important;
+}
+
+[data-testid="collapsedControl"] button:hover,
+[data-testid="collapsedControl"] button:active,
+[data-testid="collapsedControl"] button:focus,
+[data-testid="collapsedControl"] button:focus-visible {
+    background: rgba(20, 25, 33, 0.98) !important;
+    border-color: rgba(255,255,255,0.14) !important;
+    color: var(--text) !important;
+    opacity: 1 !important;
+    filter: none !important;
+    outline: none !important;
+}
+
 footer {
     visibility: hidden !important;
 }
