@@ -83,6 +83,12 @@ def render_hero(title="Hello, how can I help today?"):
     if os.path.exists(template_path):
         with open(template_path, "r", encoding="utf-8") as f:
             template = f.read()
-        # Dynamically inject title and avatar
-        rendered_template = template.replace("{avatar_b64}", avatar_b64).replace("{{_TITLE_}}", str(title))
+            
+        current_page = st.session_state.get("current_page", "Chat")
+        page_name_display = str(current_page).upper()
+        
+        # Dynamically inject title, avatar, and active page name for breadcrumbs
+        rendered_template = template.replace("{avatar_b64}", avatar_b64)\
+                                    .replace("{{_TITLE_}}", str(title))\
+                                    .replace("{{_PAGE_NAME_}}", page_name_display)
         st.markdown(rendered_template, unsafe_allow_html=True)
