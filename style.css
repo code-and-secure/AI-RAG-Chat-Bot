@@ -131,32 +131,55 @@ div[data-testid="stForm"] {
     max-width: 1180px; margin: 1.2rem auto 0; 
     background: transparent !important; border: none !important; padding: 0 !important; 
 }
-div[data-testid="stForm"] > div > div { align-items: center; } /* Align text input and button block */
+/* Ensure the horizontal block columns align vertically */
+div[data-testid="stForm"] [data-testid="stHorizontalBlock"] { 
+    align-items: center !important; 
+}
+
+/* Remove default widget bottom margins inside forms */
+div[data-testid="stForm"] .stVerticalBlock, 
+div[data-testid="stForm"] .stVerticalBlock > div {
+    gap: 0 !important;
+    padding-bottom: 0 !important;
+}
+div[data-testid="stForm"] label[data-testid="stWidgetLabel"] {
+    display: none !important;
+}
 
 div[data-testid="stTextInputRootElement"] { 
     background: var(--secondary-background-color) !important; 
     border-radius: 20px !important; border: 1px solid var(--panel-border) !important; 
     box-shadow: 0 4px 12px rgba(0,0,0,0.04) !important; 
+    height: 56px !important; 
+    display: flex !important;
+    align-items: center !important;
+    overflow: hidden !important;
+}
+div[data-testid="stTextInputRootElement"] > div {
+    height: 100% !important; width: 100% !important; flex: 1 !important;
 }
 div[data-testid="stTextInputRootElement"] input { 
-    height: 56px !important; color: var(--text-color) !important; 
+    height: 100% !important; color: var(--text-color) !important; 
     padding: 0 1.5rem !important; font-size: 1.05rem !important; 
+    background: transparent !important; border: none !important;
+    line-height: 56px !important; margin: 0 !important;
 }
 
 /* Form Buttons */
 div[data-testid="stForm"] .stFormSubmitButton button, .stButton button, .stFormSubmitButton button { 
     background: var(--text-color) !important; color: var(--background-color) !important; 
-    min-height: 56px !important; border-radius: 20px !important; font-weight: 700 !important; 
+    height: 56px !important; border-radius: 20px !important; font-weight: 700 !important; 
     border: none !important; box-shadow: var(--shadow) !important; 
-    transition: transform 0.15s ease !important; width: 100%; margin-top:0px !important;
+    transition: transform 0.15s ease !important; width: 100%; margin: 0 !important; padding: 0 !important;
+    display: flex !important; align-items: center !important; justify-content: center !important;
 }
 div[data-testid="stForm"] .stFormSubmitButton button:hover, .stButton button:hover { 
     transform: translateY(-2px); 
     box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important; 
 }
-/* Ensure the button aligns with input inside columns */
 div[data-testid="stForm"] .stFormSubmitButton {
-    height: 100%; display: flex; align-items: center; justify-content: center;
+    height: 56px !important; display: flex !important; align-items: center !important; justify-content: center !important;
+    margin: 0 !important; padding: 0 !important;
 }
 
 .response-box, .card { 
