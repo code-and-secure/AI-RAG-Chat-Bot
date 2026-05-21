@@ -98,7 +98,7 @@ st.markdown("""
 }
 
 .bot-processing {
-    bottom: 50%;
+    bottom: 20%;
     right: 50%;
     transform: translate(50%, 50%);
     animation: deepThinking 1.5s infinite ease-in-out;
