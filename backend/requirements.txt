@@ -1,4 +1,6 @@
-streamlit
+fastapi
+uvicorn[standard]
+python-multipart
 langchain
 langchain-community
 langchain-openai
@@ -6,12 +8,14 @@ chromadb
 pypdf
 python-docx
 docx2txt
-openai
 python-dotenv
 langchain-text-splitters
 langchain-groq
 sentence-transformers
+langchain-huggingface
+torchvision
 requests
 beautifulsoup4
 googlesearch-python
 duckduckgo-search
+pydantic

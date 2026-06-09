@@ -1,0 +1,38 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.Python
+
+# Environment variables (keep API keys out of git)
+.env
+backend/.env
+
+# HuggingFace / model cache
+.cache/
+
+# ChromaDB local data
+chroma/
+chroma_db/
+
+# Runtime stats
+backend/stats.json
+stats.json
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user
